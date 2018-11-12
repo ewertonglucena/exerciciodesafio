@@ -1,4 +1,3 @@
-
 package dados;
 import java.util.Scanner;
 public class Hd extends Drive{

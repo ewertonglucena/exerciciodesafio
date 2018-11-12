@@ -55,9 +55,7 @@ public class Motor {
         }
         if(" ".equals(modelo)){
             throw new IllegalArgumentException("Não insira espaços vazios");
-        }if(modelo == null){
-            throw new IllegalArgumentException("Não são permitidos valores nulos");
-        } 
+        }
         this.modelo = modelo;
     }
 
@@ -95,7 +93,7 @@ public class Motor {
                 boolean loop = true;
                 do{
                     try{
-                       System.out.println("Digite o modelo: "); 
+                       System.out.print("Digite o modelo: "); 
                        setModelo(sc.nextLine());
                        loop = false;
                     }catch(NumberFormatException e){
@@ -107,11 +105,11 @@ public class Motor {
                     }
                 }while(loop);
                 loop = true;
-        do{
+                do{
                     try{
-        System.out.println("Digite a Rpm: ");
-        setRpm(Integer.parseInt(sc.nextLine()));
-        loop = false;
+                        System.out.print("Digite a Rpm: ");
+                        setRpm(Integer.parseInt(sc.nextLine()));
+                        loop = false;
                     }catch(NumberFormatException e){
                         System.out.println("Erro : "+e.getMessage());
                         System.out.println(msgErro);
@@ -121,12 +119,11 @@ public class Motor {
                     }
                 }while(loop);
                 loop = true;
-                
                 do{
                     try{
-        System.out.println("Digite a Voltagem: ");
-        setVoltagem(Double.parseDouble(sc.nextLine()));
-        loop = false;
+                        System.out.println("Digite a Voltagem: ");
+                        setVoltagem(Double.parseDouble(sc.nextLine()));
+                        loop = false;
                     }catch(NumberFormatException e){
                         System.out.println("Erro : "+e.getMessage());
                         System.out.println(msgErro);
@@ -135,66 +132,6 @@ public class Motor {
                         System.out.println(msgErro);
                     }
                 }while(loop);
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
     }
     
     public void cadastrar(String m, int r, double v){

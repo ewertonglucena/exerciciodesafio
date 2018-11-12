@@ -136,7 +136,7 @@ public class Pendrive extends Drive {
         boolean loop = true;
         do{
             try{
-                System.out.println("Digite o Peso: ");
+                System.out.print("Digite o Peso: ");
                 setPeso(Double.parseDouble(sc.nextLine()));
                 loop = false;
             }catch(NumberFormatException e){

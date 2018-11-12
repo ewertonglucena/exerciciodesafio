@@ -55,9 +55,6 @@ public abstract class Drive implements Interface{
         {
             throw new IllegalArgumentException("Não são permitidos espaços vazios");
         }
-        if(marca == null){
-            throw new IllegalArgumentException("Não são permitidos valores nulos.");
-        }
         this.marca = marca;
     }
 
@@ -95,9 +92,6 @@ public abstract class Drive implements Interface{
         {
             throw new IllegalArgumentException("Não são permitidos espaços vazios");
         }
-        if(info == null){
-            throw new IllegalArgumentException("Não são permitidos valores nulos.");
-        }
         this.info = info;
     }
     
@@ -132,7 +126,7 @@ public abstract class Drive implements Interface{
         loop = true;
         do{
             try{
-                System.out.println("Digite o Preço: ");
+                System.out.print("Digite o Preço: ");
                 setPreco(Double.parseDouble(sc.nextLine()));
                 loop = false;
                 
