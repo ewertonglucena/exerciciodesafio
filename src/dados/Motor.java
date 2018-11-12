@@ -1,4 +1,5 @@
 package dados;
+import static dados.Drive.msgErro;
 import java.util.Scanner;
 /**
  *
@@ -49,6 +50,14 @@ public class Motor {
     }
 
     public void setModelo(String modelo) {
+        if("".equals(modelo)){
+            throw new IllegalArgumentException("Não insira campos vazios.");   
+        }
+        if(" ".equals(modelo)){
+            throw new IllegalArgumentException("Não insira espaços vazios");
+        }if(modelo == null){
+            throw new IllegalArgumentException("Não são permitidos valores nulos");
+        } 
         this.modelo = modelo;
     }
 
@@ -57,6 +66,9 @@ public class Motor {
     }
 
     public void setRpm(int rpm) {
+        if(rpm <=0){
+            throw new IllegalArgumentException("Não são permitidos valores negativos ou zero.");
+        }
         this.rpm = rpm;
     }
 
@@ -65,6 +77,9 @@ public class Motor {
     }
 
     public void setVoltagem(double voltagem) {
+        if(voltagem <=0){
+            throw new IllegalArgumentException("Não são permitidos valores negativos ou zero.");
+        }
         this.voltagem = voltagem;
     }
     
@@ -77,12 +92,109 @@ public class Motor {
     
     public void entradaDados(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite o modelo: ");
-        setModelo(sc.nextLine());
+                boolean loop = true;
+                do{
+                    try{
+                       System.out.println("Digite o modelo: "); 
+                       setModelo(sc.nextLine());
+                       loop = false;
+                    }catch(NumberFormatException e){
+                        System.out.println("Erro : "+e.getMessage());
+                        System.out.println(msgErro);
+                    }catch(IllegalArgumentException e){
+                        System.out.println("Erro :"+e.getMessage());
+                        System.out.println(msgErro);
+                    }
+                }while(loop);
+                loop = true;
+        do{
+                    try{
         System.out.println("Digite a Rpm: ");
         setRpm(Integer.parseInt(sc.nextLine()));
+        loop = false;
+                    }catch(NumberFormatException e){
+                        System.out.println("Erro : "+e.getMessage());
+                        System.out.println(msgErro);
+                    }catch(IllegalArgumentException e){
+                        System.out.println("Erro :"+e.getMessage());
+                        System.out.println(msgErro);
+                    }
+                }while(loop);
+                loop = true;
+                
+                do{
+                    try{
         System.out.println("Digite a Voltagem: ");
         setVoltagem(Double.parseDouble(sc.nextLine()));
+        loop = false;
+                    }catch(NumberFormatException e){
+                        System.out.println("Erro : "+e.getMessage());
+                        System.out.println(msgErro);
+                    }catch(IllegalArgumentException e){
+                        System.out.println("Erro :"+e.getMessage());
+                        System.out.println(msgErro);
+                    }
+                }while(loop);
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
     }
     
     public void cadastrar(String m, int r, double v){
