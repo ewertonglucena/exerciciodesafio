@@ -85,6 +85,9 @@ public class Pendrive extends Drive {
     }
 
     public void setVelocidadeGravacao(double velocidadeGravacao) {
+        if(velocidadeGravacao <= 0){
+            throw new IllegalArgumentException("Não são permitidos valores negativos ou zero.");
+        }
         this.velocidadeGravacao = velocidadeGravacao;
     }
 
@@ -93,6 +96,9 @@ public class Pendrive extends Drive {
     }
 
     public void setVelocidadeLeitura(double velocidadeLeitura) {
+        if(velocidadeLeitura <= 0){
+            throw new IllegalArgumentException("Não são permitidos valores negativos ou zero.");
+        }
         this.velocidadeLeitura = velocidadeLeitura;
     }
 
@@ -101,6 +107,9 @@ public class Pendrive extends Drive {
     }
 
     public void setPeso(double peso) {
+        if(peso <= 0){
+            throw new IllegalArgumentException("Não são permitidos valores negativos ou zero.");
+        }
         this.peso = peso;
     }
     
@@ -124,11 +133,47 @@ public class Pendrive extends Drive {
     public void entradaDados(){
         Scanner sc = new Scanner(System.in);
         super.entradaDados();
-        System.out.println("Digite o Peso: ");
-        setPeso(Double.parseDouble(sc.nextLine()));
-        System.out.print("Digite a Velocidade de Gravação: ");
-        setVelocidadeGravacao(Double.parseDouble(sc.nextLine()));
-        System.out.print("Digite a Velocidade de Leitura: ");
-        setVelocidadeLeitura(Double.parseDouble(sc.nextLine()));
+        boolean loop = true;
+        do{
+            try{
+                System.out.println("Digite o Peso: ");
+                setPeso(Double.parseDouble(sc.nextLine()));
+                loop = false;
+            }catch(NumberFormatException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
+        loop = true;
+        do{
+            try{
+                System.out.print("Digite a Velocidade de Gravação: ");
+                setVelocidadeGravacao(Double.parseDouble(sc.nextLine()));
+                loop = false;
+            }catch(NumberFormatException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
+        loop = true;
+        do{
+            try{
+                System.out.print("Digite a Velocidade de Leitura: ");
+                setVelocidadeLeitura(Double.parseDouble(sc.nextLine()));
+                loop = false;
+            }catch(NumberFormatException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
     }
 }
