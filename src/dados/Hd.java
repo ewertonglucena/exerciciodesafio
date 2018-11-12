@@ -70,6 +70,9 @@ public class Hd extends Drive{
     }
 
     public void setQuantidadeSetores(int quantidadeSetores) {
+        if(quantidadeSetores <= 0){
+            throw new IllegalArgumentException("Não são válidos números negativos ou zero.");
+        }
         this.quantidadeSetores = quantidadeSetores;
     }
 
@@ -99,8 +102,18 @@ public class Hd extends Drive{
         Scanner sc = new Scanner(System.in);
         super.entradaDados();
         motor1.entradaDados();
-        System.out.print("Digite a quantidade de setores: ");
-        setQuantidadeSetores(Integer.parseInt(sc.nextLine()));
+        boolean loop = true;
+        do{
+            try{
+                System.out.print("Digite a quantidade de setores: ");
+                setQuantidadeSetores(Integer.parseInt(sc.nextLine()));
+                loop = false;
+            }catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
+
     }
     
 }

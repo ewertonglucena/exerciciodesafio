@@ -6,6 +6,7 @@ public abstract class Drive implements Interface{
     protected double preco;
     protected int capacidade;
     protected String info;
+    public static final String msgErro = "Insira um dado válido!";
     
     public Drive(){}
     
@@ -116,12 +117,49 @@ public abstract class Drive implements Interface{
     public void entradaDados(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite os dados do "+getInfo());
-        System.out.print("Digite a Marca: ");
-        setMarca(sc.nextLine());
-        System.out.println("Digite o Preço: ");
-        setPreco(Double.parseDouble(sc.nextLine()));
-        System.out.print("Digite a Capacidade: ");
-        setCapacidade(Integer.parseInt(sc.nextLine()));
+        boolean loop = true;
+        do{
+            try{
+                System.out.print("Digite a Marca: ");
+                setMarca(sc.nextLine());
+                loop = false;
+            }
+            catch(IllegalArgumentException e){
+                System.out.println("Erro:"+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
+        loop = true;
+        do{
+            try{
+                System.out.println("Digite o Preço: ");
+                setPreco(Double.parseDouble(sc.nextLine()));
+                loop = false;
+                
+            }catch(NumberFormatException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+            catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
+        loop = true;
+        do{
+            try{
+                System.out.print("Digite a Capacidade: ");
+                setCapacidade(Integer.parseInt(sc.nextLine()));
+                loop = false;
+            }catch(NumberFormatException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+            catch(IllegalArgumentException e){
+                System.out.println("Erro: "+e.getMessage());
+                System.out.println(msgErro);
+            }
+        }while(loop);
     }
     
     public void ler(){
